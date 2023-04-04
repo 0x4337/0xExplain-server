@@ -17,8 +17,9 @@ router.post("/generate", async (req, res) => {
   try {
     // get the sourceCode from the request body
     const sourceCode = req.body.sourceCode;
-    // const prompt = `Your job is to provide a detailed analysis of the following ethereum smart contract, explain what each function does and point out any dangerous features for users interacting with it, if any: ${sourceCode}`;
+    // const prompt = `Your job is to provide a detailed analysis of the following ethereum smart contract, explain what each function does and point out any dangerous features for users interacting with it, if any. Your response is going to be displayed on a page so ensure theres proper formatting and paragraphing: ${sourceCode}`;
     const prompt = `If you can read the following ethereum start contract respond with "Read contract successfully" ${sourceCode}`;
+    // const prompt = "count to 50";
 
     // creates a completion object with the sourceCode as the prompt
     const { data } = await openai.createChatCompletion({
