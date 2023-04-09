@@ -45,7 +45,6 @@ router.post("/generateInteraction", async (req, res) => {
 
     const promptIndex = req.body.promptIndex; // Get the prompt index from the request body
 
-    // Define an array of slightly reworded prompts
     // const prompts = [
     //   `Provided is the decoded input data of an ethereum transaction along with the source code and abi of the contract the transaction is interacting with, your job is to provide a detailed summary of exactly what this transaction did, what the expected outcome is, what the function invoked will do given the provided input and any other relevant information. ${allData}`,
     //   `Analyze the decoded input data of an ethereum transaction, the source code, and the ABI of the associated contract. Provide a summary of the transaction, the expected outcome, the function's behavior given the input, and any other pertinent details. ${allData}`,
@@ -57,6 +56,7 @@ router.post("/generateInteraction", async (req, res) => {
     //   `Based on the decoded input data of an Ethereum transaction, the contract's source code, and ABI, generate an elaborate overview of the transaction, its foreseeable consequences, the function's response to the provided input, and any other noteworthy aspects. ${allData}`,
     // ];
 
+    // Test prompts
     const prompts = [
       `Say 0`,
       `Say 1`,
@@ -79,7 +79,6 @@ router.post("/generateInteraction", async (req, res) => {
     console.log(allData.length);
     const { data } = await openai.createChatCompletion({
       // model: "gpt-4",
-
       // Test Model:
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
