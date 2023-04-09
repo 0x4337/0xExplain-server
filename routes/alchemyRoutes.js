@@ -52,12 +52,12 @@ router.get("/getTxnFull/:txnHash", async (req, res) => {
 // An endpoint to mock a response from the live API
 router.get("/testPending", async (req, res) => {
   try {
-    // const pendingData = fs.readFileSync(
-    //   "./data/testJSON/testPending.json",
-    //   "utf8"
-    // );
+    const pendingData = fs.readFileSync(
+      "./data/testJSON/testPending.json",
+      "utf8"
+    );
 
-    const pendingData = 1;
+    // const pendingData = 1;
 
     res.json(pendingData);
   } catch (error) {
