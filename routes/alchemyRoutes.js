@@ -276,7 +276,9 @@ router.get("/getNFTs/:walletAddress", async (req, res) => {
       const contractAddress = nft.contract.address;
       const isSpam = await alchemy.nft.isSpamContract(contractAddress);
 
-      if (!isSpam.result) {
+      console.log(isSpam);
+
+      if (!isSpam) {
         nonSpamNfts.push(nft);
       }
     }
