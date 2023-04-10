@@ -17,9 +17,21 @@ router.post("/generate", async (req, res) => {
   try {
     // get the sourceCode from the request body
     const sourceCode = req.body.sourceCode;
-    // const prompt = `Your job is to provide a detailed analysis of the following ethereum smart contract, explain what each function does and point out any dangerous features for users interacting with it, if any. Your response is going to be displayed on a page so ensure theres proper formatting and paragraphing: ${sourceCode}`;
-    const prompt = `If you can read the following ethereum start contract respond with "Read contract successfully" ${sourceCode}`;
-    // const prompt = "count to 50";
+    const promptIndex = req.body.promptIndex;
+
+    // const prompts = [
+    //   `Your job is to provide a detailed analysis of the following ethereum smart contract, explain what each function does and point out any dangerous features for users interacting with it, if any ${sourceCode}`,
+    //   `Analyze the given Ethereum smart contract in detail, describing the functionality of each function and pointing out any hazardous aspects for users who interact with the contract, if there are any. ${sourceCode}`,
+    //   `Conduct a comprehensive examination of the Ethereum smart contract provided, describing the role of each function and highlighting any potentially harmful elements for users who engage with the contract, if such elements exist. ${sourceCode}`,
+    //   `Perform a detailed evaluation of the Ethereum smart contract included, clarifying the function of each method and noting any potentially risky features for users who interact with the contract, if present. ${sourceCode}`,
+    //   `Investigate the Ethereum smart contract presented, and offer a meticulous breakdown of its functions, explaining what each one does. Additionally, identify any unsafe characteristics for users who engage with the contract, if any are present. ${sourceCode}`,
+    // ];
+
+    // Test prompts
+    const prompts = [`Say 1`, `Say 2`, `Say 3`, `Say 4`, `Say 5`];
+
+    // Select the prompt based on the promptIndex
+    const prompt = prompts[promptIndex];
 
     // creates a completion object with the sourceCode as the prompt
     const { data } = await openai.createChatCompletion({
@@ -71,16 +83,11 @@ router.post("/generateInteraction", async (req, res) => {
     // Select the prompt based on the promptIndex
     const prompt = prompts[promptIndex];
 
-    // // const prompt = `Provided is the source code and abi of the contract the transaction is interacting with along with the decoded input data, your job is to provide a detailed summary of exactly what this transaction did, what the expected outcome is, what the function invoked will do given the provided input and any other relevant information. ${allData}`;
-    // const prompt = `Provided is the decoded input data of an ethereum transaction along with the source code and abi of the contract the transaction is interacting with, your job is to provide a detailed summary of exactly what this transaction did, what the expected outcome is, what the function invoked will do given the provided input and any other relevant information. ${allData}`;
-    // // const prompt = `Provided is the source code and abi of an ethereum smart contract along with the decoded input data of a transaction that is interacting with the smart contract, your job is to provide a detailed summary of exactly what this transaction did, what the expected outcome is, what the function invoked will do given the provided input and any other relevant information. ${allData}`;
-    // // const prompt = `If you can read the following ethereum smart contract source code, abi and decoded transaction input data respond with "Read All successfully" ${allData}`;
-
     console.log(allData.length);
     const { data } = await openai.createChatCompletion({
-      // model: "gpt-4",
+      model: "gpt-4",
       // Test Model:
-      model: "gpt-3.5-turbo",
+      // model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
     });
 
