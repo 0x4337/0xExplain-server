@@ -35,8 +35,8 @@ router.post("/generate", async (req, res) => {
 
     // creates a completion object with the sourceCode as the prompt
     const { data } = await openai.createChatCompletion({
-      // model: "gpt-3.5-turbo",
-      model: "gpt-4",
+      model: "gpt-3.5-turbo",
+      // model: "gpt-4",
       messages: [{ role: "user", content: prompt }],
     });
 
@@ -85,9 +85,9 @@ router.post("/generateInteraction", async (req, res) => {
 
     console.log(allData.length);
     const { data } = await openai.createChatCompletion({
-      model: "gpt-4",
+      // model: "gpt-4",
       // Test Model:
-      // model: "gpt-3.5-turbo",
+      model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: prompt }],
     });
 
