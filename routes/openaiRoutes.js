@@ -27,6 +27,8 @@ router.post("/generate", async (req, res) => {
       `Investigate the Ethereum smart contract presented, and offer a meticulous breakdown of its functions, explaining what each one does. Additionally, identify any unsafe characteristics for users who engage with the contract, if any are present. ${sourceCode}`,
     ];
 
+    // 3 is good
+
     // Test prompts
     // const prompts = [`Say 1`, `Say 2`, `Say 3`, `Say 4`, `Say 5`];
 
