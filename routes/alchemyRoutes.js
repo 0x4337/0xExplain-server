@@ -174,25 +174,25 @@ router.get("/getTxns/:walletAddress", async (req, res) => {
   }
 });
 
-// router.get("/getCreationDate/:walletAddress", async (req, res) => {
-//   try {
-//     const walletAddress = req.params.walletAddress;
+router.get("/getCreationDate/:walletAddress", async (req, res) => {
+  try {
+    const walletAddress = req.params.walletAddress;
 
-//     const response = await alchemy.core.getTransactionCount(walletAddress);
-//     const block = await alchemy.core.getBlock(response, true);
-//     const timestamp = block.timestamp;
+    const response = await alchemy.core.getTransactionCount(walletAddress);
+    const block = await alchemy.core.getBlock(response, true);
+    const timestamp = block.timestamp;
 
-//     const date = new Date(timestamp * 1000).toLocaleDateString("en-US", {
-//       year: "numeric",
-//       month: "long",
-//       day: "numeric",
-//     });
+    const date = new Date(timestamp * 1000).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
 
-//     res.json(date);
-//   } catch (error) {
-//     res.status(500).json({ message: "Error fetching wallet creation date" });
-//   }
-// });
+    res.json(date);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching wallet creation date" });
+  }
+});
 
 router.get("/getTxnCount/:walletAddress", async (req, res) => {
   try {
