@@ -121,6 +121,7 @@ router.post("/generateInteraction", async (req, res) => {
       `if you are able to read the provided data, respond with "Read Txn Successfully - This is test GPT response 5": ${allData}`,
       `if you are able to read the provided data, respond with "Read Txn Successfully - This is test GPT response 6": ${allData}`,
       `if you are able to read the provided data, respond with "Read Txn Successfully - This is test GPT response 7": ${allData}`,
+      `if you are able to read the provided data, respond with "Read Txn Successfully - This is test GPT simple response 8": ${allData}`,
     ];
 
     // Select the prompt based on the promptIndex
